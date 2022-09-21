@@ -14,11 +14,17 @@ const productSlice = createSlice({
       const idx = state.findIndex((e) => e.id === product.id);
       state[idx] = product;
     },
+
+    deleteProduct: (state, action) => {
+      const product = action.payload;
+      const idx = state.findIndex((e) => e.id === product.id);
+      state.splice(idx, 1);
+    },
   },
 });
 
 export const {
-  actions: { addProduct, updateProduct },
+  actions: { addProduct, updateProduct, deleteProduct },
   reducer: productReducers,
 } = productSlice;
 

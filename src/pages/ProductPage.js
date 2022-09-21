@@ -4,6 +4,7 @@ import { Button, Form, Input, InputNumber, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addProduct,
+  deleteProduct,
   selectProducts,
   updateProduct,
 } from "../redux/slice/product.slice";
@@ -30,6 +31,9 @@ export const ProductPage = () => {
             }}
           >
             Edit
+          </Button>
+          <Button onClick={() => dispatch(deleteProduct(product))}>
+            Delete
           </Button>
         </>
       ),
@@ -74,7 +78,7 @@ export const ProductPage = () => {
           </Form>
         </div>
 
-        <Table columns={columns} dataSource={products} />
+        <Table rowKey="id" columns={columns} dataSource={products} />
       </div>
     </Layout>
   );
